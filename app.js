@@ -68,7 +68,7 @@ app.post("/register", async (req, res) => {
                 res.send(mailOption);
             }
         });
-        res.status(200).send("You are successfully registered");
+        res.status(200).send(mailOption);
     }
     catch (error) {
         console.log(error)
