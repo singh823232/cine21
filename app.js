@@ -4,6 +4,8 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
+const bcrypt = require("bcryptjs");
+const randomstring = require("randomstring");
 
 
 const app = express();
@@ -33,13 +35,21 @@ app.use((req, res, next) => {  // To remove CROS (cross-resource-origin-platform
 
 app.get("/", (req, res) => {
     res.send("working");
+
 });
 
-// console.log(process.env.EMAIL)
+// generate custom password
 
 app.post("/register", async (req, res) => {
     try {
-        const condidateSchema = new candidate(req.body)
+        const password = "secret"
+
+        const body = {
+            ...req.body,
+            password: await bcrypt.hash(password, 10)
+        }
+
+        const condidateSchema = new candidate(body);
         const studentData = await condidateSchema.save()
         console.log(studentData);
 
@@ -74,6 +84,14 @@ app.post("/register", async (req, res) => {
     catch (error) {
         console.log(error)
         res.status(400).send("You are already exist");
+    }
+})
+
+app.post("/verify", async (req, res) => {
+    try {
+
+    } catch (error) {
+        res.status(400).send(error)
     }
 })
 

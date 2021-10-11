@@ -1,51 +1,59 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 
 const employeSchema = new mongoose.Schema({
-    // _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     studentNumber: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
     },
     rollNumber: {
         type: Number,
         required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    phoneNumber: {
-        type: Number,
-        required: true,
-        unique: true
+        unique: true,
     },
     branch: {
         type: String,
-        required: true
-    },
-    residency: {
-        type: String
-    },
-    attendedExam: {
-        type: Boolean,
-        default: false
+        required: true,
     },
     isAdmin: {
         type: Boolean,
-        default: false
+        default: false,
+    },
+    hasAppeared: {
+        type: Boolean,
+        default: false,
+    },
+    isHostler: {
+        type: Boolean,
+        default: false,
+    },
+    email: {
+        type: String,
+        require: true,
+        max: 50,
+        unique: true,
+    },
+    password: {
+        type: String,
+    },
+    score: {
+        type: Number,
+        default: 0
+    },
+    categorySelected: {
+        type: String,
+    },
+},
+    {
+        timestamps: { createdAt: true, updatedAt: false },
     }
-})
+);
 
 
 const candidate = new mongoose.model("candidate", employeSchema);
