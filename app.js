@@ -106,11 +106,10 @@ app.post("/feedback", async (req, res) => {
 
 app.put("/:id", async (req, res) => {
     try {
-        const data = await candidate.findOneAndUpdate({
-            _id: req.params.id,
-            categorySelected: req.body.category,
+        const data = await candidate.findOneAndUpdate({ _id: req.params.id }, {
+            loginAt: new Date(),
             hasAppeared: true,
-            loginAt: new Date()
+            categorySelected: req.body.category
         });
         console.log(data)
         res.status(200).send(data);
