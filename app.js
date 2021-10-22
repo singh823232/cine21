@@ -5,13 +5,13 @@ const nodemailer = require("nodemailer");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const bcrypt = require("bcryptjs");
-const randomstring = require("randomstring");
 
 
 const app = express();
 
 require("./src/db/conn.js");
 const candidate = require("./src/models/registers");
+const feedback = require("./src/models/feedback");
 const { Mongoose } = require("mongoose");
 
 const port = process.env.PORT || 8000;
@@ -87,14 +87,38 @@ app.post("/register", async (req, res) => {
     }
 })
 
-app.post("/verify", async (req, res) => {
+app.post("/feedback", async (req, res) => {
     try {
-
-    } catch (error) {
-        res.status(400).send(error)
+        const feedbackText = {
+            feed: req.body.text
+        };
+        console.log(feedbackText);
+        const feedbackSchema = new feedback(feedbackText);
+        const fb = await feedbackSchema.save();
+        console.log(fb);
+        res.status(200).send("successfully done")
+    }
+    catch (error) {
+        console.log(error)
+        res.status(400).send(error);
     }
 })
 
+app.put("/:id", async (req, res) => {
+    try {
+        const data = await candidate.findOneAndUpdate({
+            _id: req.params.id,
+            categorySelected: req.body.category,
+            hasAppeared: true,
+            loginAt: new Date()
+        });
+        console.log(data)
+        res.status(200).send(data);
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error);
+    }
+})
 
 
 app.listen(port, () => {

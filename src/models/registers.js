@@ -5,7 +5,6 @@ const employeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     studentNumber: {
         type: Number,
@@ -49,11 +48,17 @@ const employeSchema = new mongoose.Schema({
     categorySelected: {
         type: String,
     },
+    loginAt: {
+        type: Date,
+        default: null
+    }
 },
     {
         timestamps: { createdAt: true, updatedAt: false },
     }
 );
+
+
 
 
 const candidate = new mongoose.model("candidate", employeSchema);
