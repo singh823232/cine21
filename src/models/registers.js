@@ -33,8 +33,8 @@ const employeSchema = new mongoose.Schema({
         default: false,
     },
     isHostler: {
-        type: Boolean,
-        default: false,
+        type: String,
+        default: null
     },
     email: {
         type: String,
