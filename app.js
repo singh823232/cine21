@@ -43,7 +43,6 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
     try {
         const password = "secret"
-
         const body = {
             ...req.body,
             password: await bcrypt.hash(password, 10)
