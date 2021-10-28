@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const db = 'mongodb+srv://aman:12345@cluster0.jusdn.mongodb.net/cine?retryWrites=true&w=majority';
+const db = 'mongodb://aman:12345@cluster0-shard-00-00.jusdn.mongodb.net:27017,cluster0-shard-00-01.jusdn.mongodb.net:27017,cluster0-shard-00-02.jusdn.mongodb.net:27017/cine?ssl=true&replicaSet=atlas-lrwrk4-shard-0&authSource=admin&retryWrites=true&w=majority';
 
 
 mongoose.connect(db, {
