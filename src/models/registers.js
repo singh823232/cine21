@@ -11,11 +11,6 @@ const employeSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    // rollNumber: {
-    //     type: Number,
-    //     required: true,
-    //     unique: true,
-    // },
     domain: {
         type: String,
         required: true
