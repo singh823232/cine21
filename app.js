@@ -77,12 +77,12 @@ app.post("/register", async (req, res) => {
                 res.send(mailOption);
             }
         });
-        res.status(200).send(mailOption);
+        res.status(200).send(studentData);
 
     }
     catch (error) {
         console.log(error)
-        res.status(400).send("You are already exist");
+        res.status(400).send(error.name);
     }
 })
 
@@ -103,20 +103,20 @@ app.post("/feedback", async (req, res) => {
     }
 })
 
-app.put("/:id", async (req, res) => {
-    try {
-        const data = await candidate.findOneAndUpdate({ _id: req.params.id }, {
-            loginAt: new Date(),
-            hasAppeared: true,
-            categorySelected: req.body.category
-        });
-        console.log(data)
-        res.status(200).send(data);
-    } catch (error) {
-        console.log(error)
-        res.status(400).send(error);
-    }
-})
+// app.put("/:id", async (req, res) => {
+//     try {
+//         const data = await candidate.findOneAndUpdate({ _id: req.params.id }, {
+//             loginAt: new Date(),
+//             hasAppeared: true,
+//             categorySelected: req.body.category
+//         });
+//         console.log(data)
+//         res.status(200).send(data);
+//     } catch (error) {
+//         console.log(error)
+//         res.status(400).send(error);
+//     }
+// })
 
 
 app.listen(port, () => {
