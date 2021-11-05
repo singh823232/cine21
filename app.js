@@ -82,7 +82,7 @@ app.post("/register", async (req, res) => {
     }
     catch (error) {
         console.log(error)
-        res.status(400).send(error.name);
+        res.status(400).send(error);
     }
 })
 

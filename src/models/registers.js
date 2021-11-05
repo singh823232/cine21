@@ -10,6 +10,7 @@ const employeSchema = new mongoose.Schema({
         type: Number,
         required: true,
         unique: true,
+        dropDups: true
     },
     domain: {
         type: String,
@@ -34,13 +35,15 @@ const employeSchema = new mongoose.Schema({
     phoneNumber: {
         type: Number,
         required: true,
-        unique: true
+        unique: true,
+        dropDups: true
     },
     email: {
         type: String,
         require: true,
         max: 50,
         unique: true,
+        dropDups: true
     },
     password: {
         type: String,
