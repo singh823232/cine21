@@ -31,6 +31,11 @@ const employeSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    phoneNumber: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     email: {
         type: String,
         require: true,
