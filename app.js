@@ -64,7 +64,7 @@ app.post("/register", async (req, res) => {
             from: process.env.EMAIL,
             to: req.body.email,
             subject: "CINE'21",    // https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbGZVWUJFbnFPUFk1aGVkMm9UVHhnaWJjc1FYUXxBQ3Jtc0tuZnFNa3BMVkR5SkZIWm5lLWw0NEF5b0tsYnF3T2dnR3pXUm1xNVo4YTJ2cFJiLVJsdGpfc24zYkpaWGx5bnFiT3lLb0NGQk9zcVlqaF9lRXI3alN6Qm5XVXBHNEdNS2NkeERuY0tZaDg5ZW1aUkZEYw&q=https%3A%2F%2Fmyaccount.google.com%2Flesssecureapps
-            html: "<h3>CONGRATULATION,</h3><br>" + "<h1 style='font-weight:bold;'>You are successfully registered</h1>"
+            html: "<h1 style='font-weight:bold;'>Greetings from Team CSI ,</h1><br>" + "<h2>Congratulations you have successfully registered for CODESHELL 2.0.</h1><br>" + "<h2> Please verify your entry on 9th and 10th November at the CSIT block.  For the latest updates follow our Instagram account csi_akgec</h2>"
         };
 
         transporter.sendMail(mailOption, function (error, info) {
