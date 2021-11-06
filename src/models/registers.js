@@ -14,7 +14,6 @@ const employeSchema = new mongoose.Schema({
     },
     domain: {
         type: String,
-        required: true
     },
     branch: {
         type: String,
@@ -58,7 +57,10 @@ const employeSchema = new mongoose.Schema({
     loginAt: {
         type: Date,
         default: null
-    }
+    },
+    hackerrank: {
+        type: String,
+    },
 },
     {
         timestamps: { createdAt: true, updatedAt: false },
