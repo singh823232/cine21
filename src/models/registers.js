@@ -12,6 +12,10 @@ const employeSchema = new mongoose.Schema({
         unique: true,
         dropDups: true
     },
+    year: {
+        type: Number,
+        required: true
+    },
     domain: {
         type: String,
     },
